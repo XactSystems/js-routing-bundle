@@ -40,8 +40,8 @@ See
 [CONTRIBUTING](https://github.com/ianfoulds/js-routing-bundle/blob/master/CONTRIBUTING.md)
 file.
 
-Original Credits
-----------------
+Credits
+-------
 
 * Ian Foulds as the creator of this package.
 * William DURAND as author of the FOS bundle.
@@ -53,4 +53,4 @@ License
 This bundle is released under the MIT license. See the complete license in the
 bundle:
 
-[LICENSE](https://github.com/ianfoulds/js-routing-bundle/blob/master/LICENSE.md)
+[LICENSE](https://github.com/ianfoulds/js-routing-bundle/LICENSE.md)
