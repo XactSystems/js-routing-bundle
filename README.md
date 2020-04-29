@@ -21,6 +21,7 @@ composer require ianfoulds/js-routing-bundle
 
 ### 3) Include the JS module in your App.js
 ```javascript
+// assets/js/App.js
 // Import the JS routing scripts
 import '../../vendor/ianfoulds/js-routing/assets/js-routing.js';
 ```
@@ -52,4 +53,4 @@ License
 This bundle is released under the MIT license. See the complete license in the
 bundle:
 
-    [LICENSE](https://github.com/ianfoulds/js-routing-bundle/blob/master/LICENSE.md)
+[LICENSE](https://github.com/ianfoulds/js-routing-bundle/blob/master/LICENSE.md)
