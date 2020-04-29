@@ -24,6 +24,7 @@ composer require ianfoulds/js-routing-bundle
 // Import the JS routing scripts
 import '../../vendor/ianfoulds/js-routing/assets/js-routing.js';
 ```
+The actual path to the js-routing.js file may not be exactly as shown, you may need to adjust this for your own project.
 
 ### 4) Using the routing class, exactly as you would with FOS bundle
 ```javascript
@@ -51,4 +52,4 @@ License
 This bundle is released under the MIT license. See the complete license in the
 bundle:
 
-    LICENSE
+    [LICENSE](https://github.com/ianfoulds/js-routing-bundle/blob/master/LICENSE.md)
