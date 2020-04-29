@@ -53,4 +53,4 @@ License
 This bundle is released under the MIT license. See the complete license in the
 bundle:
 
-[LICENSE](https://github.com/ianfoulds/js-routing-bundle/LICENSE)
+[LICENSE](https://github.com/ianfoulds/js-routing-bundle/blob/master/LICENSE)
