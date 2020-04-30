@@ -9,6 +9,11 @@
             "email": "ianfoulds@x-act.co.uk"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.1-alpha.1"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Xact\\JSRoutingBundle\\": "src"

@@ -22,6 +22,7 @@ composer require ianfoulds/js-routing-bundle
 ### 3) Include the JS module in your App.js
 ```javascript
 // assets/js/App.js
+
 // Import the JS routing scripts
 import '../../vendor/ianfoulds/js-routing/assets/js-routing.js';
 ```
@@ -33,13 +34,6 @@ The actual path to the js-routing.js file may not be exactly as shown, you may n
 let url1 = Routing.generate('home');
 let url2 = Routing.generate('some-other-route', {id: myLocalId, state: myLocalState});
 ```
-Contributing
-------------
-
-See
-[CONTRIBUTING](https://github.com/ianfoulds/js-routing-bundle/blob/master/CONTRIBUTING.md)
-file.
-
 Credits
 -------
 
