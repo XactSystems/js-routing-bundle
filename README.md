@@ -9,7 +9,7 @@ Documentation
 ### 1) Add JSRoutingBundle to your project
 
 ```bash
-composer require ianfoulds/js-routing-bundle
+composer require XactSystems/js-routing-bundle
 ```
 
 ### 2) Include the routing template in your base Twig template
