@@ -11,7 +11,7 @@
     ],
     "extra": {
         "branch-alias": {
-            "dev-master": "0.0.1-alpha.1"
+            "dev-master": "0.0.1-dev"
         }
     },
     "autoload": {
