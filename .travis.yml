@@ -15,10 +15,9 @@ matrix:
     fast_finish: true
     include:
           # Test the latest stable release
-        - php: 7.1
         - php: 7.2
         - php: 7.3
-          env: DEPENDENCIES="symfony" STABILITY="stable"
+          env: DEPENDENCIES="symfony/website-skeleton" STABILITY="stable"
 
           # Test LTS versions. This makes sure we do not use Symfony packages with version greater
           # than 3 or 4 respectively. Read more at https://github.com/symfony/lts
