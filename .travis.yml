@@ -5,6 +5,7 @@ cache:
         - $HOME/.composer/cache/files
         - $HOME/symfony-bridge/.phpunit
 
+        
 git:
   clone: false
 
