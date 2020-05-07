@@ -48,7 +48,7 @@ install:
     - ./vendor/bin/simple-phpunit install
 
 before_script:
-    - ls -al %TRAVIS_BUILD_DIR%
+    - ls -al ${TRAVIS_BUILD_DIR}
 
 script:
     - composer validate --strict --no-check-lock
