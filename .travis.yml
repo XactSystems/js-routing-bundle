@@ -45,15 +45,13 @@ before_install:
     - composer init --name "xact/travis-test" --description "Travis test install" --author "Ian Foulds <ianfoulds@x-act.co.uk>" --type package -s dev -l MIT --no-interaction
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
-    - echo $TRAVIS_BRANCH
     - git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
-    - ls -al
-    - cat composer.json
 
 install:
     # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
     - composer install ${COMPOSER_FLAGS} --prefer-dist --no-interaction
-    #- ./vendor/bin/simple-phpunit install
+    - ls -al
+    - ./vendor/bin/simple-phpunit install
 
 script:
     - composer validate --strict --no-check-lock
