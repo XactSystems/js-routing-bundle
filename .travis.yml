@@ -45,7 +45,7 @@ before_install:
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
     - echo $TRAVIS_BRANCH
-    - echo $TRAVIS_REPO_SLUG
+    - mkdir -p lib/xact/js-routing
     - ls -al
 
 install:
