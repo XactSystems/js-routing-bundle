@@ -5,7 +5,7 @@ cache:
         - $HOME/.composer/cache/files
         - $HOME/symfony-bridge/.phpunit
 
-        
+
 git:
   clone: false
 
@@ -44,7 +44,6 @@ before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
-    - echo -e "branch: $TRAVIS_BRANCH, slug: $TRAVIS_REPO_SLUG"
 
 install:
     # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
