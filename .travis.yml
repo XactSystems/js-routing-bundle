@@ -47,8 +47,8 @@ before_install:
     #- composer init --name "xact/travis-test" --description "Travis test install" --author "Ian Foulds <ianfoulds@x-act.co.uk>" --type package -s dev -l MIT --no-interaction
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     #- if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
-    - if ! [ -z "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton:$SYMFONYVERSION symfony
-    - if ! [ -v "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton symfony
+    - if ! [ -z "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton:$SYMFONYVERSION symfony; fi
+    - if ! [ -v "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton symfony; fi
     - cd symfony
     - git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
 
