@@ -21,30 +21,29 @@ matrix:
           # Test the latest stable release
         - php: 7.2
         - php: 7.3
-          env: STABILITY="stable"
+          env: SYMFONY=">=5.0-stable"
 
           # Test LTS versions. This makes sure we do not use Symfony packages with version greater
           # than 3 or 4 respectively. Read more at https://github.com/symfony/lts
         - php: 7.2
         - php: 7.3
           env: 
-              - SYMFONYVERSION="^3.4"
-              - SYMFONYVERSION="^4.4"
+              - SYMFONY="^3.4"
+              - SYMFONY="^4.4"
 
           # Latest commit to master
         - php: 7.3
-          env: SYMFONYVERSION="dev"
+          env: SYMFONY="dev"
 
     allow_failures:
           # Dev-master is allowed to fail.
-        - env: SYMFONYVERSION="dev"
+        - env: SYMFONY="dev"
 
 before_install:
     - ls -al
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
-    - if ! [ -z "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton:$SYMFONYVERSION symfony; fi
-    - if ! [ -v "$SYMFONYVERSION" ]; then composer create-project symfony/website-skeleton symfony; fi
+    - if ! [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton:$SYMFONY symfony; fi
+    - if ! [ -v "$SYMFONY" ]; then composer create-project symfony/website-skeleton symfony; fi
     - cd symfony
     - git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
 
