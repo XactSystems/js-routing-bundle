@@ -40,6 +40,7 @@ matrix:
         - env: SYMFONYVERSION="dev"
 
 before_install:
+    - ls -al
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
     #- wget https://get.symfony.com/cli/installer -O - | bash
     #- export PATH="$HOME/.symfony/bin:$PATH"
@@ -57,7 +58,7 @@ install:
     - ./vendor/bin/simple-phpunit install
 
 script:
-    - composer validate --strict --no-check-lock
+    #- composer validate --strict --no-check-lock
     # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
     # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
     - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
