@@ -33,11 +33,11 @@ matrix:
 
           # Latest commit to master
         - php: 7.3
-          env: SYMFONY="dev"
+          env: SYMFONY=">=5.0-dev"
 
     allow_failures:
           # Dev-master is allowed to fail.
-        - env: SYMFONY="dev"
+        - env: SYMFONY=">=5.0-dev"
 
 before_install:
     - ls -al
