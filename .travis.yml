@@ -7,7 +7,7 @@ cache:
 
         
 git:
-  clone: true
+  clone: false
 
 env:
     global:
@@ -45,18 +45,14 @@ before_install:
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
     - echo $TRAVIS_BRANCH
-    - mkdir -p lib/xact/js-routing
+    - git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
     - ls -al
-    - cd lib/xact/js-routing
+    - cat composer.json
 
 install:
     # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
-    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
-    - ./vendor/bin/simple-phpunit install
-
-before_script:
-    - mkdir lib/xact/js-routing
+    - composer install ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+    #- ./vendor/bin/simple-phpunit install
 
 script:
     - composer validate --strict --no-check-lock
