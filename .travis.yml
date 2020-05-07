@@ -5,6 +5,10 @@ cache:
         - $HOME/.composer/cache/files
         - $HOME/symfony-bridge/.phpunit
 
+        
+git:
+  clone: false
+
 env:
     global:
         - PHPUNIT_FLAGS="-v"
@@ -14,46 +18,48 @@ env:
 matrix:
     fast_finish: true
     include:
-          # Minimum supported dependencies with the latest and oldest PHP version
-        - php: 7.3
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
-        - php: 7.1
-          env: COMPOSER_FLAGS="--prefer-stable --prefer-lowest" SYMFONY_DEPRECATIONS_HELPER="weak_vendors"
-
           # Test the latest stable release
-        - php: 7.1
         - php: 7.2
         - php: 7.3
-          env: COVERAGE=true PHPUNIT_FLAGS="-v --coverage-text"
+          env: SYMFONY=">=5.0-stable"
 
           # Test LTS versions. This makes sure we do not use Symfony packages with version greater
           # than 3 or 4 respectively. Read more at https://github.com/symfony/lts
+        - php: 7.2
         - php: 7.3
-          env: DEPENDENCIES="symfony/lts:^3"
+          env: 
+              - SYMFONY="^3.4"
+        - php: 7.2
         - php: 7.3
-          env: DEPENDENCIES="symfony/lts:^4"
+          env: 
+              - SYMFONY="^4.4"
 
           # Latest commit to master
         - php: 7.3
-          env: STABILITY="dev"
+          env: SYMFONY=">=5.0-dev"
 
     allow_failures:
           # Dev-master is allowed to fail.
-        - env: STABILITY="dev"
+        - env: SYMFONY=">=5.0-dev"
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
-    - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
+    - if ! [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton:$SYMFONY symfony; fi
+    - if [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton symfony; fi
+    - cd symfony
+    - composer config repositories.xactsystems vcs https://github.com/XactSystems/js-routing-bundle.git --no-interaction
+    # Does not work for private repos, needs SSH key or other auth
+    - composer require xactsystems/js-routing-bundle:dev-$TRAVIS_BRANCH --no-interaction
+    - cat vendor/composer/autoload_psr4.php
+    #- git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
 
 install:
-    # To be removed when this issue will be resolved: https://github.com/composer/composer/issues/5355
-    - if [[ "$COMPOSER_FLAGS" == *"--prefer-lowest"* ]]; then composer update --prefer-dist --no-interaction --prefer-stable --quiet; fi
-    - composer update ${COMPOSER_FLAGS} --prefer-dist --no-interaction
+    - ls -al vendor/xactsystems
+    - cp -p vendor/xactsystems/js-routing-bundle/phpunit.xml.dist .
     - ./vendor/bin/simple-phpunit install
 
 script:
-    - composer validate --strict --no-check-lock
+    #- composer validate --strict --no-check-lock
     # simple-phpunit is the PHPUnit wrapper provided by the PHPUnit Bridge component and
     # it helps with testing legacy code and deprecations (composer require symfony/phpunit-bridge)
     - ./vendor/bin/simple-phpunit $PHPUNIT_FLAGS
