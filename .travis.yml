@@ -25,7 +25,6 @@ matrix:
 
           # Test LTS versions. This makes sure we do not use Symfony packages with version greater
           # than 3 or 4 respectively. Read more at https://github.com/symfony/lts
-        - php: 7.1
         - php: 7.2
         - php: 7.3
           env: 
@@ -41,6 +40,7 @@ matrix:
         - env: STABILITY="dev"
 
 before_install:
+    - symfony --help
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
     - composer init --name "xact/travis-test" --description "Travis test install" --author "Ian Foulds <ianfoulds@x-act.co.uk>" --type package -s dev -l MIT --no-interaction
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
