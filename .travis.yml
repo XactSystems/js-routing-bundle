@@ -42,6 +42,7 @@ matrix:
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
     - wget https://get.symfony.com/cli/installer -O - | bash
+    - export PATH="$HOME/.symfony/bin:$PATH"
     - symfony --help
     - composer init --name "xact/travis-test" --description "Travis test install" --author "Ian Foulds <ianfoulds@x-act.co.uk>" --type package -s dev -l MIT --no-interaction
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
