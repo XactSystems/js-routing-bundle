@@ -20,7 +20,7 @@
             <directory>tests</directory>
         </testsuite>
         <testsuite name="XactJSRouting Test Suite">
-            <directory>lib/xact/js-routing/Tests</directory>
+            <directory>XactSystems/js-routing-bundle/Tests</directory>
         </testsuite>
     </testsuites>
 
