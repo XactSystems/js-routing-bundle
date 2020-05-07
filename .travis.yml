@@ -42,7 +42,7 @@ matrix:
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - composer init -name "xact/travis-test" --description "Travis test install" --author "Ian Foulds" --type package -s dev -l MIT
+    - composer init --name "xact/travis-test" --description "Travis test install" --author "Ian Foulds <ianfoulds@x-act.co.uk>" --type package -s dev -l MIT --no-interaction
     - if ! [ -z "$STABILITY" ]; then composer config minimum-stability ${STABILITY}; fi;
     - if ! [ -v "$DEPENDENCIES" ]; then composer require --no-update ${DEPENDENCIES}; fi;
     - echo $TRAVIS_BRANCH
