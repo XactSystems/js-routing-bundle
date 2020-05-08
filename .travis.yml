@@ -46,7 +46,7 @@ before_install:
     - if [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton symfony; fi
     - cd symfony
     - composer config repositories.xactsystems vcs https://github.com/XactSystems/js-routing-bundle.git --no-interaction
-    - cat composer.json
+    - find vendor/xactsystems -ls
     # Does not work for private repos
     - composer require xactsystems/js-routing-bundle:dev-$TRAVIS_BRANCH --no-interaction
     #- git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
