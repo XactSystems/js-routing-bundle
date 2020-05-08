@@ -16,11 +16,8 @@
     </php>
 
     <testsuites>
-        <testsuite name="Project Test Suite">
-            <directory>tests</directory>
-        </testsuite>
-        <testsuite name="XactJSRouting Test Suite">
-            <directory>XactSystems/js-routing-bundle/Tests</directory>
+        <testsuite name="js-routing-bundle Test Suite">
+            <directory>vendor/xactsystems/js-routing-bundle/Tests</directory>
         </testsuite>
     </testsuites>
 
