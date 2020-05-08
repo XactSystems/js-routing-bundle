@@ -1,5 +1,5 @@
 {
-    "name": "xactsystems/js-routing",
+    "name": "xactsystems/js-routing-bundle",
     "description": "A JS routing bundle for Symfony 3.4+ using webpack. Derived from the FOS JSRoutingBundle.",
     "type": "symfony-bundle",
     "license": "MIT",
