@@ -51,6 +51,7 @@ before_install:
 
 install:
     - ls -al vendor/xactsystems
+    - cp -p vendor/xactsystems/js-routing-bundle/phpunit.xml.dist .
     - ./vendor/bin/simple-phpunit install
 
 script:
