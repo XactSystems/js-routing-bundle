@@ -21,7 +21,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Xact\\JSRoutingBundle\\Tests\\": "tests/"
+            "Xact\\JSRoutingBundle\\Tests\\": "src/tests/"
         }
     },
     "minimum-stability": "dev",
