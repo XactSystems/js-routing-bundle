@@ -18,29 +18,19 @@ env:
 matrix:
     fast_finish: true
     include:
-          # Test the latest stable release
+          # Test the 3.4 LTS release
         - php: 7.2
         - php: 7.3
-          env: SYMFONY=">=5.0-stable"
-
-          # Latest commit to master
-        - php: 7.3
-          env: SYMFONY=">=5.0-dev"
-
-    allow_failures:
-          # Dev-master is allowed to fail.
-        - env: SYMFONY=">=5.0-dev"
+          env: SYMFONY="3.4-lts"
 
 before_install:
     - if [[ $COVERAGE != true ]]; then phpenv config-rm xdebug.ini || true; fi
-    - if ! [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton:$SYMFONY symfony; fi
-    - if [ -z "$SYMFONY" ]; then composer create-project symfony/website-skeleton symfony; fi
+    - if composer create-project symfony/website-skeleton:$SYMFONY symfony
     - cd symfony
     - composer config repositories.xactsystems vcs https://github.com/XactSystems/js-routing-bundle.git --no-interaction
     # Does not work for private repos, needs SSH key or other auth
-    - composer require xactsystems/js-routing-bundle:dev-$TRAVIS_BRANCH --no-interaction
+    - composer require xactsystems/js-routing-bundle:dev-3.4 --no-interaction
     - cat vendor/composer/autoload_psr4.php
-    #- git clone --depth=50 --branch=$TRAVIS_BRANCH https://github.com/XactSystems/js-routing-bundle.git XactSystems/js-routing-bundle
 
 install:
     - ls -al vendor/xactsystems
