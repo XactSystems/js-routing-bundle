@@ -23,17 +23,6 @@ matrix:
         - php: 7.3
           env: SYMFONY=">=5.0-stable"
 
-          # Test LTS versions. This makes sure we do not use Symfony packages with version greater
-          # than 3 or 4 respectively. Read more at https://github.com/symfony/lts
-        - php: 7.2
-        - php: 7.3
-          env: 
-              - SYMFONY="^3.4"
-        - php: 7.2
-        - php: 7.3
-          env: 
-              - SYMFONY="^4.4"
-
           # Latest commit to master
         - php: 7.3
           env: SYMFONY=">=5.0-dev"
