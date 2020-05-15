@@ -3,17 +3,13 @@
     "description": "A JS routing bundle for Symfony 3.4 using webpack. Derived from the FOS JSRoutingBundle.",
     "type": "symfony-bundle",
     "license": "MIT",
+    "version": "v3.4.0-dev",
     "authors": [
         {
             "name": "Ian Foulds",
             "email": "ianfoulds@x-act.co.uk"
         }
     ],
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.0.1-dev"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Xact\\JSRoutingBundle\\": ""
