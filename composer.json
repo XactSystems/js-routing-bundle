@@ -23,7 +23,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^7.0",
-        "symfony/symfony": "~3.4",
         "symfony/asset": "~3.4",
         "symfony/form": "~3.4",
         "symfony/serializer-pack": "~1.0",
