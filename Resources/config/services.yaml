@@ -6,7 +6,7 @@ services:
 
     Xact\JSRoutingBundle\:
         resource: '../../*'
-        exclude: './{DependencyInjection,Resources,Tests,XactJSRoutingBundle.php}'
+        exclude: './{DependencyInjection,Extractor/ExtractedRoute.php,Resources,Tests,XactJSRoutingBundle.php}'
     
     Xact\JSRoutingBundle\Extractor\RoutingExtractor:
         $cacheDir: '%kernel.cache_dir%'
