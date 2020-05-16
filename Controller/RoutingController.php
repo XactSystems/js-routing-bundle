@@ -21,11 +21,17 @@ class RoutingController extends AbstractController
     protected $extractor;
 
     /**
+     * @var \Symfony\Component\Serializer\SerializerInterface
+     */
+    protected $serializer;
+
+    /**
      * Class constructor.
      */
-    public function __construct(RoutingExtractor $extractor)
+    public function __construct(RoutingExtractor $extractor, SerializerInterface $serializer)
     {
         $this->extractor = $extractor;
+        $this->serializer = $serializer;
     }
 
     /**
@@ -34,10 +40,10 @@ class RoutingController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function routingData(SerializerInterface $serializer) : JsonResponse
+    public function routingData() : JsonResponse
     {
         $routes = $this->extractor->getRoutes();
-        return JsonResponse::fromJsonString($serializer->serialize($routes, self::JSON_FORMAT));
+        return JsonResponse::fromJsonString($this->serializer->serialize($routes, self::JSON_FORMAT));
     }
 }
 
