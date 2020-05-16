@@ -5,6 +5,6 @@ services:
         autoconfigure: false # Automatically registers your services as commands, event subscribers, etc.
 
     Xact\JSRoutingBundle\Extractor\RoutingExtractor:
-        autowire: true
+        $router: '@router'
         $cacheDir: '%kernel.cache_dir%'
         $appEnv: '%env(string:APP_ENV)%'
