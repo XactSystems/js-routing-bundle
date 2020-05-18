@@ -8,8 +8,10 @@ Documentation
 -------------
 ### 1) Add JSRoutingBundle to your project
 
+For Symfony 3.4 you need to access the repo directly and not via packagist.
 ```bash
-composer require XactSystems/js-routing-bundle
+composer config repositories.xactsystems vcs https://github.com/XactSystems/js-routing-bundle.git
+composer require xactsystems/js-routing-bundle:3.4.x-dev
 ```
 
 ### 2) Include the routing template in your base Twig template
