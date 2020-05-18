@@ -35,9 +35,9 @@ class RoutesTest extends WebTestCase
         $router = $this->getRouter($expectedRoutes);
 
         $extractor = new RoutingExtractor($router, $cacheDir, $appEnv);
-        $controller = new RoutingController($extractor);
+        $controller = new RoutingController($extractor, $serializer);
 
-        $response = $controller->routingData($serializer);
+        $response = $controller->routingData();
 
         $this->assertEquals(200, $response->getStatusCode());
         
