@@ -39,7 +39,7 @@ class RoutingController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function routingData(SerializerInterface $serializer) : JsonResponse
+    public function routingData() : JsonResponse
     {
         $routes = $this->extractor->getRoutes();
         return JsonResponse::fromJsonString($this->serializer->serialize($routes, self::JSON_FORMAT));
