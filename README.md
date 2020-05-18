@@ -5,7 +5,6 @@ This bundle allows you to expose your Symfony routes and use them in your webpac
 It allows you to easily intergrate the functionality of the FOSJsRoutingBundle into webpack modules.
 
 For Symfony 3.4, see the dedicated 3.4 branch https://github.com/XactSystems/js-routing-bundle/tree/3.4
-N.B. You need to access the repo directly and not use packagist for 3.4.
 
 Documentation
 -------------
