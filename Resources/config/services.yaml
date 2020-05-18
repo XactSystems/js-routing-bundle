@@ -1,13 +1,14 @@
 services:
     # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autowire: false      # Automatically injects dependencies in your services.
+        autoconfigure: false # Automatically registers your services as commands, event subscribers, etc.
 
-    Xact\JSRoutingBundle\:
-        resource: '../../*'
-        exclude: './{DependencyInjection,Resources,Tests,XactJSRoutingBundle.php}'
+    Xact\JSRoutingBundle\Controller\RoutingController:
+        $extractor: '@Xact\JSRoutingBundle\Extractor\RoutingExtractor'
+        $serializer: '@serializer'
     
     Xact\JSRoutingBundle\Extractor\RoutingExtractor:
+        $router: '@router'
         $cacheDir: '%kernel.cache_dir%'
         $appEnv: '%env(string:APP_ENV)%'
