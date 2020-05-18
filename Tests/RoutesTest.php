@@ -23,7 +23,8 @@ class RoutesTest extends WebTestCase
     {
         self::bootKernel();
 
-        $cacheDir = self::$container->getParameter('kernel.cache_dir');
+        $client = static::createClient();
+        $cacheDir = $client->getContainer()->getParameter('kernel.cache_dir');
         $appEnv = 'test';
         $expectedRoutes = new RouteCollection();
         $expectedRoutes->add('literal', new Route('/literal', [], [], ['expose' => true]));
@@ -35,7 +36,7 @@ class RoutesTest extends WebTestCase
         $router = $this->getRouter($expectedRoutes);
 
         $extractor = new RoutingExtractor($router, $cacheDir, $appEnv);
-        $controller = new RoutingController($extractor);
+        $controller = new RoutingController($extractor, $serializer);
 
         $response = $controller->routingData($serializer);
 
