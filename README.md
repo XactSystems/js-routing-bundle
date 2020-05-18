@@ -26,7 +26,7 @@ composer require xactsystems/js-routing-bundle:3.4.x-dev
 // assets/js/App.js
 
 // Import the JS routing scripts
-import '../../vendor/ianfoulds/js-routing/assets/js-routing.js';
+import '../../vendor/xactsystems/js-routing/assets/js-routing.js';
 ```
 The actual path to the js-routing.js file may not be exactly as shown, you may need to adjust this for your own project.
 
