@@ -1,6 +1,6 @@
 {
     "name": "xactsystems/js-routing-bundle",
-    "description": "A JS routing bundle for Symfony 4+ using webpack. Derived from the FOS JSRoutingBundle.",
+    "description": "A JS routing bundle for Symfony 4+ using webpack. Derived from the FOS JSRoutingBundle. See 3.4 branch for Symfony 3.4.",
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
