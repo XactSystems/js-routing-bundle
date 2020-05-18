@@ -7,10 +7,7 @@ It allows you to easily intergrate the functionality of the FOSJsRoutingBundle i
 Documentation
 -------------
 ### 1) Add JSRoutingBundle to your project
-
-For Symfony 3.4 you need to access the repo directly and not via packagist.
 ```bash
-composer config repositories.xactsystems vcs https://github.com/XactSystems/js-routing-bundle.git
 composer require xactsystems/js-routing-bundle:3.4.x-dev
 ```
 
