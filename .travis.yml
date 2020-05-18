@@ -36,6 +36,8 @@ before_install:
 install:
     - cp -pf vendor/xactsystems/js-routing-bundle/monolog.yaml .\config\packages\test\
     - cp -p vendor/xactsystems/js-routing-bundle/phpunit.xml.dist .
+    - ls -al .\config\packages\test\
+    - cat .\config\packages\test\monolog.yaml
     - ./vendor/bin/simple-phpunit install
 
 script:
