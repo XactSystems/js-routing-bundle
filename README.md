@@ -7,8 +7,13 @@ It allows you to easily intergrate the functionality of the FOSJsRoutingBundle i
 Documentation
 -------------
 ### 1) Add JSRoutingBundle to your project
+
 ```bash
-composer require xactsystems/js-routing-bundle:3.4.x-dev
+composer require xactsystems/js-routing-bundle
+```
+For Symfony 3.4 use:
+```bash
+composer require xactsystems/js-routing-bundle:^3.4
 ```
 
 ### 2) Include the routing template in your base Twig template
@@ -33,6 +38,25 @@ The actual path to the js-routing.js file may not be exactly as shown, you may n
 let url1 = Routing.generate('home');
 let url2 = Routing.generate('some-other-route', {id: myLocalId, state: myLocalState});
 ```
+### 5) For Symfony 3.4, if you are not using Flex and ENV you may need to add the following:
+```php
+// app/AppKernel.php
+
+    public function registerBundles()
+    {
+        // You many need to do this to get the render(controller()) Twig method working for XactJSRoutingBundle
+        $_ENV["APP_ENV"] = $this->getEnvironment();
+```
+And for the Symfony Serializer component:
+```yaml
+// app/config/config.yml
+
+framework:
+    ...
+    # If you havn't already enabled the Symfony Serializer
+    serializer: { enabled: true }
+```
+
 Credits
 -------
 
