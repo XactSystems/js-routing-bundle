@@ -4,6 +4,7 @@ namespace Xact\JSRoutingBundle\Tests;
 
 use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Routing\Router;
@@ -15,11 +16,25 @@ use Xact\JSRoutingBundle\Controller\RoutingController;
 use Xact\JSRoutingBundle\Extractor\ExtractedRoute;
 use Xact\JSRoutingBundle\Extractor\RoutingExtractor;
 
+/**
+ * Router tests
+ */
 class RoutesTest extends WebTestCase
 {
     protected const JSON_FORMAT = 'json';
 
-    public function testExtractedRoutes()
+    /**
+     * Configure the kernel class
+     */
+    protected static function getKernelClass(): string
+    {
+        return TestKernel::class;
+    }
+
+    /**
+     * Extracted routes test
+     */
+    public function testExtractedRoutes(): void
     {
         self::bootKernel();
 
@@ -70,10 +85,8 @@ class RoutesTest extends WebTestCase
 
     /**
      * Get a mock object which represents a Router
-     *
-     * @return \Symfony\Component\Routing\Router
      */
-    private function getRouter(RouteCollection $routes) : MockObject
+    private function getRouter(RouteCollection $routes): MockObject
     {
         $router = $this->getMockBuilder(Router::class)
             ->disableOriginalConstructor()
@@ -86,4 +99,3 @@ class RoutesTest extends WebTestCase
         return $router;
     }
 }
-
