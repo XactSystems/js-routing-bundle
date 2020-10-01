@@ -36,13 +36,10 @@ class RoutingController extends AbstractController
     /**
      * Return the exposed routes as JSON
      * This method does not have a route and is called directly from the twig template
-     *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function routingData() : JsonResponse
+    public function routingData(): JsonResponse
     {
         $routes = $this->extractor->getRoutes();
         return JsonResponse::fromJsonString($this->serializer->serialize($routes, self::JSON_FORMAT));
     }
 }
-
