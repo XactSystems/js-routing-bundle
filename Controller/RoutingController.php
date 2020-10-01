@@ -4,7 +4,6 @@ namespace Xact\JSRoutingBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Xact\JSRoutingBundle\Extractor\RoutingExtractor;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -40,10 +39,9 @@ class RoutingController extends AbstractController
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function routingData() : JsonResponse
+    public function routingData(): JsonResponse
     {
         $routes = $this->extractor->getRoutes();
         return JsonResponse::fromJsonString($this->serializer->serialize($routes, self::JSON_FORMAT));
     }
 }
-

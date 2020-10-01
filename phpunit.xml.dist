@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!-- https://phpunit.readthedocs.io/en/latest/configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="bin/.phpunit/phpunit.xsd"
-         backupGlobals="false"
-         colors="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/7.5/phpunit.xsd"
          bootstrap="vendor/autoload.php"
->
+         verbose="true"
+         backupGlobals="false"
+         colors="true">
+
     <php>
         <ini name="error_reporting" value="-1" />
         <server name="APP_ENV" value="test" force="true" />
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
-        <server name="SYMFONY_PHPUNIT_VERSION" value="7.5" />
+        <server name="SYMFONY_PHPUNIT_VERSION" value="8.3" />
     </php>
 
     <testsuites>
-        <testsuite name="js-routing-bundle Test Suite">
-            <directory>Tests</directory>
+        <testsuite name="js-routing-bundle tests">
+            <directory suffix="Test.php">Tests</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">.</directory>
         </whitelist>
     </filter>
 

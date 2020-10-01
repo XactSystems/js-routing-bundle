@@ -6,7 +6,11 @@ use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Routing\RouteCollectionBuilder;
 
+/**
+ * Test kernel class
+ */
 class TestKernel extends Kernel
 {
     use MicroKernelTrait;
@@ -23,6 +27,13 @@ class TestKernel extends Kernel
         foreach ($bundles as $class) {
             yield new $class();
         }
+    }
+
+    /**
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+     */
+    protected function configureRoutes(RouteCollectionBuilder $routes): void
+    {
     }
 
     /**
