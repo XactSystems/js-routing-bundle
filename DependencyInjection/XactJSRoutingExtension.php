@@ -9,15 +9,28 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\Filesystem\Filesystem;
 
+/**
+ * DI extension class for the JS router
+ */
 class XactJSRoutingExtension extends Extension implements PrependExtensionInterface
 {
-    public function load(array $configs, ContainerBuilder $container)
+    /**
+     * Load the DI configuration
+     *
+     * @param mixed[] $configs
+     *
+     * @phpcsSuppress SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter
+     */
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');
     }
 
-    public function prepend(ContainerBuilder $container)
+    /**
+     * Prepend the twig configuration with @XactJSRouting for accessing the template
+     */
+    public function prepend(ContainerBuilder $container): void
     {
         $fileSystem = new Filesystem();
         $projectDir = $container->getParameter('kernel.project_dir');
@@ -28,4 +41,3 @@ class XactJSRoutingExtension extends Extension implements PrependExtensionInterf
         $container->prependExtensionConfig('twig', $twigConfig);
     }
 }
-

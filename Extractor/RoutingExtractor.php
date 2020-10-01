@@ -33,12 +33,9 @@ class RoutingExtractor
     /**
      * Default constructor.
      *
-     * @param RouterInterface $router
-     * @param string $cacheDir
-     * @param string $appEnv
-     * @param array $routesToExpose
+     * @param object[] $routesToExpose
      */
-    public function __construct(RouterInterface $router, $cacheDir, $appEnv, array $routesToExpose = [])
+    public function __construct(RouterInterface $router, string $cacheDir, string $appEnv, array $routesToExpose = [])
     {
         $this->router = $router;
         $this->routesToExpose = $routesToExpose;
@@ -59,7 +56,7 @@ class RoutingExtractor
             $compiledRoute = $route->compile();
             $defaults = array_intersect_key(
                 $route->getDefaults(),
-                array_fill_keys($compiledRoute->getVariables(), NULL)
+                array_fill_keys($compiledRoute->getVariables(), null)
             );
             $requirements = $route->getRequirements();
             $hostTokens = method_exists($compiledRoute, 'getHostTokens') ? $compiledRoute->getHostTokens() : [];
@@ -86,12 +83,14 @@ class RoutingExtractor
         $pattern = $this->buildPattern();
 
         foreach ($collection->all() as $name => $route) {
-            if (FALSE === $route->getOption('expose')) {
+            if (false === $route->getOption('expose')) {
                 continue;
             }
 
-            if (($route->getOption('expose') && (TRUE === $route->getOption('expose') || 'true' === $route->getOption('expose')))
-                || ('' !== $pattern && preg_match('#' . $pattern . '#', $name))) {
+            if (
+                ($route->getOption('expose') && (true === $route->getOption('expose') || 'true' === $route->getOption('expose')))
+                || ('' !== $pattern && preg_match('#' . $pattern . '#', $name))
+            ) {
                 $routes[$name] = $route;
             }
         }
@@ -126,10 +125,8 @@ class RoutingExtractor
 
     /**
      * Check whether server is serving this request from a non-standard port.
-     *
-     * @return bool
      */
-    protected function usesNonStandardPort()
+    protected function usesNonStandardPort(): bool
     {
         return $this->usesNonStandardHttpPort() || $this->usesNonStandardHttpsPort();
     }
@@ -167,10 +164,8 @@ class RoutingExtractor
 
     /**
      * Convert the routesToExpose array in a regular expression pattern.
-     *
-     * @return string
      */
-    protected function buildPattern()
+    protected function buildPattern(): string
     {
         $patterns = [];
         foreach ($this->routesToExpose as $toExpose) {
@@ -182,20 +177,16 @@ class RoutingExtractor
 
     /**
      * Checks whether server is serving HTTP over a non-standard port.
-     *
-     * @return bool
      */
-    private function usesNonStandardHttpPort()
+    private function usesNonStandardHttpPort(): bool
     {
         return 'http' === $this->getScheme() && '80' != $this->router->getContext()->getHttpPort();
     }
 
     /**
      * Checks whether server is serving HTTPS over a non-standard port.
-     *
-     * @return bool
      */
-    private function usesNonStandardHttpsPort()
+    private function usesNonStandardHttpsPort(): bool
     {
         return 'https' === $this->getScheme() && '443' != $this->router->getContext()->getHttpsPort();
     }

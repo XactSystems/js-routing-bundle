@@ -35,9 +35,9 @@ class RoutesTest extends WebTestCase
      */
     public function testExtractedRoutes(): void
     {
-        self::bootKernel();
+        $kernel = self::bootKernel();
 
-        $cacheDir = self::$container->getParameter('kernel.cache_dir');
+        $cacheDir = $kernel->getContainer()->getParameter('kernel.cache_dir');
         $appEnv = 'test';
         $expectedRoutes = new RouteCollection();
         $expectedRoutes->add('literal', new Route('/literal', [], [], ['expose' => true]));
