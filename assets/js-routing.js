@@ -5,9 +5,10 @@
 import Router from './router.js';
 
 let routes = [];
-let elem = document.getElementById('xact-js-routing-data');
-if(elem) {
-    routes = JSON.parse(elem.attributes['data-routing-data'].value);
+let routesElement = document.getElementById('xact-js-routing-data');
+if(routesElement) {
+    routes = JSON.parse(routesElement.attributes['data-routing-data'].value);
+    routesElement.remove();
 }
 
 let context = {
