@@ -3,6 +3,7 @@
     "description": "A JS routing bundle for Symfony 4+ using webpack. Derived from the FOS JSRoutingBundle. See 3.4 branch for Symfony 3.4.",
     "type": "symfony-bundle",
     "license": "MIT",
+    "version": "4.4.4",
     "authors": [
         {
             "name": "Ian Foulds",
@@ -36,6 +37,6 @@
     },
     "require-dev": {
         "symfony/debug-pack": "*",
-        "symfony/test-pack": "*"
+        "symfony/phpunit-bridge": "^5.1"
     }
 }

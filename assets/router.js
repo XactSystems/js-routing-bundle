@@ -272,7 +272,7 @@ class Router {
             url = '/';
         }
 
-        route.hosttokens.forEach((token) => {
+        route.hostTokens.forEach((token) => {
             let value;
 
             if ('text' === token[0]) {
@@ -337,7 +337,7 @@ class Router {
  *     tokens: (Array.<Array.<string>>),
  *     defaults: (Object.<string, string>),
  *     requirements: Object,
- *     hosttokens: (Array.<string>)
+ *     hostTokens: (Array.<string>)
  * }}
  */
 Router.Route;

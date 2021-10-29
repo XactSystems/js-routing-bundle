@@ -2,7 +2,7 @@ XactJSRoutingBundle
 ===============
 
 This bundle allows you to expose your Symfony routes and use them in your webpack managed JavaScript code.
-It allows you to easily intergrate the functionality of the FOSJsRoutingBundle into webpack modules.
+It allows you to easily integrate the functionality of the FOSJsRoutingBundle into webpack modules.
 
 Documentation
 -------------
@@ -53,7 +53,7 @@ And for the Symfony Serializer component:
 
 framework:
     ...
-    # If you havn't already enabled the Symfony Serializer
+    # If you haven't already enabled the Symfony Serializer
     serializer: { enabled: true }
 ```
 
