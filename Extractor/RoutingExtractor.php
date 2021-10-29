@@ -7,7 +7,7 @@ use Symfony\Component\Routing\RouterInterface;
 
 /**
  * @author      Ian Foulds<ianfoulds@x-act.co.uk>
- * Dreived from the FOS routing bundle by William DURAND <william.durand1@gmail.com>
+ * Derived from the FOS routing bundle by William DURAND <william.durand1@gmail.com>
  */
 class RoutingExtractor
 {
