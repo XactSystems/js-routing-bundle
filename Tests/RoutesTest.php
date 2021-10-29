@@ -54,7 +54,7 @@ class RoutesTest extends WebTestCase
         $response = $controller->routingData();
 
         $this->assertEquals(200, $response->getStatusCode());
-        
+
         $content = $response->getContent();
         /** @var ExtractedRoute[] $decodedRoutes */
         $decodedRoutes = $serializer->deserialize($content, ExtractedRoute::class . '[]', self::JSON_FORMAT);
