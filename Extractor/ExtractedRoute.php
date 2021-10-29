@@ -3,7 +3,7 @@
 namespace Xact\JSRoutingBundle\Extractor;
 
 /**
- * Copied from the Freinds of Symfony routing bundle
+ * Copied from the Friends of Symfony routing bundle
  *
  * (c) FriendsOfSymfony <http://friendsofsymfony.github.com/>
  *
@@ -27,7 +27,7 @@ class ExtractedRoute
     /**
      * @var array
      */
-    private $hosttokens;
+    private $hostTokens;
     /**
      * @var array
      */
@@ -43,16 +43,16 @@ class ExtractedRoute
      * @param string[] $tokens
      * @param string[] $defaults
      * @param string[] $requirements
-     * @param string[] $hosttokens
+     * @param string[] $hostTokens
      * @param string[] $methods
      * @param string[] $schemes
      */
-    public function __construct(array $tokens, array $defaults, array $requirements, array $hosttokens = [], array $methods = [], array $schemes = [])
+    public function __construct(array $tokens, array $defaults, array $requirements, array $hostTokens = [], array $methods = [], array $schemes = [])
     {
         $this->tokens = $tokens;
         $this->defaults = $defaults;
         $this->requirements = $requirements;
-        $this->hosttokens = $hosttokens;
+        $this->hostTokens = $hostTokens;
         $this->methods = $methods;
         $this->schemes = $schemes;
     }
@@ -92,9 +92,9 @@ class ExtractedRoute
      *
      * @return string[]
      */
-    public function getHosttokens(): array
+    public function getHostTokens(): array
     {
-        return $this->hosttokens;
+        return $this->hostTokens;
     }
 
     /**
