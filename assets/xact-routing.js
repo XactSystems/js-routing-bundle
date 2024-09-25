@@ -1,7 +1,6 @@
 /**
- * App wide routing management service
+ * Routing management service
  */
-
 import Router from './router.js';
 
 let routes = [];
@@ -22,5 +21,7 @@ if (window.location.pathname.startsWith('/app_dev.php')) {
     context.base_url = '/app_dev.php';
 }
 
-window.Routing = new Router();
-window.Routing.setRoutingData(context);
+let routing = new Router();
+routing.setRoutingData(context);
+
+export default routing;

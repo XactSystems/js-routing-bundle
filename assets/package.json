@@ -1,0 +1,30 @@
+{
+  "name": "xact-routing",
+  "version": "4.0.0",
+  "description": "A pretty nice way to use Symfony exposed routes in your JavaScript.",
+  "keywords": [
+    "router",
+    "symfony"
+  ],
+  "license": "MIT",
+  "author": {
+    "name": "X.act Systems",
+    "url": "https://github.com/XactSystems"
+  },
+  "contributors": [
+    {
+      "name": "Ian Foulds",
+      "email": "ianfoulds@x-act.co.uk"
+    }
+  ],
+  "main": "xact-routing.js",
+  "files": [
+    "router.js"
+  ],
+  "devDependencies": {
+  },
+  "scripts": {
+  },
+  "dependencies": {
+  }
+}

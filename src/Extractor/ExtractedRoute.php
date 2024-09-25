@@ -1,6 +1,8 @@
 <?php
 
-namespace Xact\JSRoutingBundle\Extractor;
+declare(strict_types=1);
+
+namespace Xact\JSRouting\Extractor;
 
 /**
  * Copied from the Friends of Symfony routing bundle
@@ -13,31 +15,6 @@ namespace Xact\JSRoutingBundle\Extractor;
 class ExtractedRoute
 {
     /**
-     * @var string[]
-     */
-    private $tokens;
-    /**
-     * @var string[]
-     */
-    private $defaults;
-    /**
-     * @var string[]
-     */
-    private $requirements;
-    /**
-     * @var string[]
-     */
-    private $hostTokens;
-    /**
-     * @var string[]
-     */
-    private $methods;
-    /**
-     * @var string[]
-     */
-    private $schemes;
-
-    /**
      * Constructor
      *
      * @param string[] $tokens
@@ -47,19 +24,17 @@ class ExtractedRoute
      * @param string[] $methods
      * @param string[] $schemes
      */
-    public function __construct(array $tokens, array $defaults, array $requirements, array $hostTokens = [], array $methods = [], array $schemes = [])
-    {
-        $this->tokens = $tokens;
-        $this->defaults = $defaults;
-        $this->requirements = $requirements;
-        $this->hostTokens = $hostTokens;
-        $this->methods = $methods;
-        $this->schemes = $schemes;
+    public function __construct(
+        private array $tokens,
+        private array $defaults,
+        private array $requirements,
+        private array $hostTokens = [],
+        private array $methods = [],
+        private array $schemes = []
+    ) {
     }
 
     /**
-     * Return the route tokens
-     *
      * @return string[]
      */
     public function getTokens(): array
@@ -68,8 +43,6 @@ class ExtractedRoute
     }
 
     /**
-     * Return the route defaults
-     *
      * @return string[]
      */
     public function getDefaults(): array
@@ -78,8 +51,6 @@ class ExtractedRoute
     }
 
     /**
-     * Return the route requirements
-     *
      * @return string[]
      */
     public function getRequirements(): array
@@ -88,8 +59,6 @@ class ExtractedRoute
     }
 
     /**
-     * Return the route host tokens
-     *
      * @return string[]
      */
     public function getHostTokens(): array
@@ -98,8 +67,6 @@ class ExtractedRoute
     }
 
     /**
-     * Return the route methods
-     *
      * @return string[]
      */
     public function getMethods(): array
@@ -108,8 +75,6 @@ class ExtractedRoute
     }
 
     /**
-     * Return the route schemes
-     *
      * @return string[]
      */
     public function getSchemes(): array

@@ -1,8 +1,10 @@
 <?php
 
-namespace Xact\JSRoutingBundle\Extractor;
+declare(strict_types=1);
 
-use Symfony\Component\Routing\Route;
+namespace Xact\JSRouting\Extractor;
+
+use Symfony\Component\Config\Resource\ResourceInterface;
 use Symfony\Component\Routing\RouterInterface;
 
 /**
@@ -12,45 +14,23 @@ use Symfony\Component\Routing\RouterInterface;
 class RoutingExtractor
 {
     /**
-     * @var RouterInterface
+     * @param string[] $routesToExpose Array of routes names to expose
      */
-    protected $router;
-
-    /**
-     * Base cache directory
-     *
-     * @var string
-     */
-    protected $cacheDir;
-
-    /**
-     * APP_ENV setting
-     *
-     * @var string
-     */
-    protected $appEnv;
-
-    /**
-     * Default constructor.
-     *
-     * @param object[] $routesToExpose
-     */
-    public function __construct(RouterInterface $router, string $cacheDir, string $appEnv, array $routesToExpose = [])
-    {
-        $this->router = $router;
-        $this->routesToExpose = $routesToExpose;
-        $this->cacheDir = $cacheDir;
-        $this->appEnv = $appEnv;
+    public function __construct(
+        protected RouterInterface $router,
+        protected string $cacheDir,
+        protected string $appEnv,
+        protected array $routesToExpose = []
+    ) {
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<string, \Xact\JSRouting\Extractor\ExtractedRoute>
      */
-    public function getRoutes()
+    public function getRoutes(): array
     {
         $exposedRoutes = [];
 
-        /** @var Route $route */
         foreach ($this->getExposedRoutes() as $name => $route) {
             // Maybe there is a better way to do that...
             $compiledRoute = $route->compile();
@@ -74,9 +54,9 @@ class RoutingExtractor
     }
 
     /**
-     * {@inheritDoc}
+     * @return array<string, \Symfony\Component\Routing\Route>
      */
-    public function getExposedRoutes()
+    public function getExposedRoutes(): array
     {
         $routes = [];
         $collection = $this->router->getRouteCollection();
@@ -88,7 +68,7 @@ class RoutingExtractor
             }
 
             if (
-                ($route->getOption('expose') && (true === $route->getOption('expose') || 'true' === $route->getOption('expose')))
+                (true === $route->getOption('expose') || 'true' === $route->getOption('expose'))
                 || ('' !== $pattern && preg_match('#' . $pattern . '#', $name))
             ) {
                 $routes[$name] = $route;
@@ -98,18 +78,12 @@ class RoutingExtractor
         return $routes;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getBaseUrl()
+    public function getBaseUrl(): string
     {
         return $this->router->getContext()->getBaseUrl() ?: '';
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    public function getHost()
+    public function getHost(): string
     {
         $requestContext = $this->router->getContext();
 
@@ -123,18 +97,7 @@ class RoutingExtractor
         return $host;
     }
 
-    /**
-     * Check whether server is serving this request from a non-standard port.
-     */
-    protected function usesNonStandardPort(): bool
-    {
-        return $this->usesNonStandardHttpPort() || $this->usesNonStandardHttpsPort();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->router->getContext()->getScheme();
     }
@@ -142,7 +105,7 @@ class RoutingExtractor
     /**
      * {@inheritDoc}
      */
-    public function getCachePath()
+    public function getCachePath(): string
     {
         $cachePath = $this->cacheDir . DIRECTORY_SEPARATOR . 'AppJsRouting';
         if (!file_exists($cachePath)) {
@@ -155,11 +118,19 @@ class RoutingExtractor
     }
 
     /**
-     * {@inheritDoc}
+     * @return ResourceInterface[]
      */
-    public function getResources()
+    public function getResources(): array
     {
         return $this->router->getRouteCollection()->getResources();
+    }
+
+    /**
+     * Check whether server is serving this request from a non-standard port.
+     */
+    protected function usesNonStandardPort(): bool
+    {
+        return $this->usesNonStandardHttpPort() || $this->usesNonStandardHttpsPort();
     }
 
     /**

@@ -1,0 +1,22 @@
+files:
+    '%CONFIG_DIR%/bundles.php':
+        type: php_array
+        entries:
+            Xact\JSRouting\XactJSRoutingBundle:
+                dev: true
+                test: true
+        filters:
+            keys: [class_constant]
+            values: [single_line_array]
+
+    '%ROOT_DIR%/package.json':
+        type: json
+        entries:
+            dependencies:
+                xact-routing: "file:vendor/xactsystems/js-routing-bundle/assets"
+
+post_install_output: |
+    <bg=blue;fg=white>                                                              </>
+    <bg=blue;fg=white> Your package.json file has been updated.                     </>
+    <bg=blue;fg=white> Please run 'npm install' to install the xact-routing module. </>
+    <bg=blue;fg=white>                                                              </>

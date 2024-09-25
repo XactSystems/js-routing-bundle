@@ -1,14 +1,6 @@
 'use strict';
 
 /**
- * @fileoverview This file defines the Router class.
- *
- * You can compile this file by running the following command from the Resources folder:
- *
- *    npm install && npm run build
- */
-
-/**
  * Class Router
  */
 class Router {
@@ -349,4 +341,4 @@ Router.Route;
  */
 Router.Context;
 
-module.exports = Router;
+export default Router;

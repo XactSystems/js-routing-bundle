@@ -1,8 +1,8 @@
 XactJSRoutingBundle
 ===============
 
-This bundle allows you to expose your Symfony routes and use them in your webpack managed JavaScript code.
-It allows you to easily intergrate the functionality of the FOSJsRoutingBundle into webpack modules.
+This bundle allows you to expose your Symfony routes and use them in your webpack or vite managed JavaScript code.
+It allows you to easily integrate the functionality of the FOSJsRoutingBundle into ES modules.
 
 Documentation
 -------------
@@ -20,17 +20,22 @@ composer require xactsystems/js-routing-bundle:^3.4
 ```twig
 // templates/base.html.twig
 
-{{ include("@XactJSRouting/js-routing.html.twig") }}
+{{ include("@XactJSRouting/xact-routing.html.twig") }}
 ```
 
 ### 3) Include the JS module in your App.js
+The package installation will automatically update your package.json file to import xact-routing module.
+After running composer, run:
+```bash
+npm install
+```
+Add routing to your App.js file, and/or other scripts as required:
 ```javascript
 // assets/js/App.js
 
-// Import the JS routing scripts
-import '../../vendor/xactsystems/js-routing-bundle/assets/js-routing.js';
+// Import the JS routing class
+import Routing from 'xact-routing';
 ```
-The actual path to the js-routing.js file may not be exactly as shown, you may need to adjust this for your own project.
 
 ### 4) Using the routing class, exactly as you would with FOS bundle
 ```javascript
@@ -53,7 +58,7 @@ And for the Symfony Serializer component:
 
 framework:
     ...
-    # If you havn't already enabled the Symfony Serializer
+    # If you haven't already enabled the Symfony Serializer
     serializer: { enabled: true }
 ```
 

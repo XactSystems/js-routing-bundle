@@ -1,0 +1,17 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    Xact\JSRouting\Controller\RoutingController:
+        public: true
+        tags: ['controller.service_arguments']
+        bind:
+            $extractor: '@Xact\JSRouting\Extractor\RoutingExtractor'
+            $serializer: '@serializer'
+    
+    Xact\JSRouting\Extractor\RoutingExtractor:
+        $router: '@router'
+        $cacheDir: '%kernel.cache_dir%'
+        $appEnv: '%env(string:APP_ENV)%'

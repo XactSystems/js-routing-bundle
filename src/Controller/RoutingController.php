@@ -1,36 +1,22 @@
 <?php
 
-namespace Xact\JSRoutingBundle\Controller;
+declare(strict_types=1);
+
+namespace Xact\JSRouting\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Xact\JSRoutingBundle\Extractor\RoutingExtractor;
 use Symfony\Component\Serializer\SerializerInterface;
+use Xact\JSRouting\Extractor\RoutingExtractor;
 
-/**
- * Routing controller class
- */
 class RoutingController extends AbstractController
 {
     protected const JSON_FORMAT = 'json';
 
-    /**
-     * @var \Xact\JSRoutingBundle\Extractor\RoutingExtractor
-     */
-    protected $extractor;
-
-    /**
-     * @var \Symfony\Component\Serializer\SerializerInterface
-     */
-    protected $serializer;
-
-    /**
-     * Class constructor.
-     */
-    public function __construct(RoutingExtractor $extractor, SerializerInterface $serializer)
-    {
-        $this->extractor = $extractor;
-        $this->serializer = $serializer;
+    public function __construct(
+        protected RoutingExtractor $extractor,
+        protected SerializerInterface $serializer
+    ) {
     }
 
     /**
