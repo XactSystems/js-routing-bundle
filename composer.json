@@ -3,7 +3,6 @@
     "description": "A JS routing bundle for Symfony. Derived from the FOS JSRoutingBundle.",
     "type": "symfony-bundle",
     "license": "MIT",
-    "version": "4.0.0",
     "authors": [
         {
             "name": "Ian Foulds",
